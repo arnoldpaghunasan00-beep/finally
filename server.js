@@ -1,8 +1,13 @@
 require('dotenv').config();
+const fs = require('fs');
 const express = require('express');
 const mysql = require('mysql2');
 const path = require('path');
 const multer = require('multer');
+
+if (!fs.existsSync('public/uploads')) {
+  fs.mkdirSync('public/uploads', { recursive: true });
+}
 
 const app = express();
 
@@ -82,6 +87,6 @@ app.delete('/delete/:id', (req, res) => {
 });
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, '0.0.0.0', () => {
+app.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT}`);
 });
