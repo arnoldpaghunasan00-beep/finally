@@ -44,7 +44,7 @@ db.query("SELECT 1", (err) => {
 
 // homepage
 app.get('/', (req, res) => {
-  res.sendFile(__dirname, 'public/index.html');
+  res.sendFile(path.join(__dirname, 'public/index.html'));
 });
 
 // create product
